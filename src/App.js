@@ -1,5 +1,6 @@
 import './App.css';
 import Location from './components/Location';
+import WeatherBox from './components/WeatherBox';
 import React from 'react';
 
 function App() {
@@ -16,14 +17,10 @@ function App() {
 					className = "search-btn"
 					placeholder="seach"
 				>Search</button>
-
-				{/* <Location /> */}
 			</main>
 			<Location />	
 			<WeatherBox />
 		</div>
-			// <Location />
-
 	);
 }
 
