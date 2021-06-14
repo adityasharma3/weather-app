@@ -96,13 +96,12 @@ main > button:hover {
 
 .temp {
   background-color: rgba(50,50,70,1);
-  margin: 0 30rem ;
-  padding: 3.5rem;
+  width: 25%;
+  margin: auto;
+  padding: 2.5rem;
   font-size: 36px;
-  font-style: normal;
   border-radius: 2.5rem 0;
   font-weight: 500;
-
 }
 
 @media screen and (max-width: 900px) {
@@ -114,5 +113,20 @@ main > button:hover {
     background-position: center;
     background-repeat: no-repeat;
     border-radius: 2.5rem 0;
+  }
+
+  .temp {
+    width: 50%;
+    padding: 2rem;
+  }
+
+  main > button {
+    height: .71em;
+    font-size: medium;
+    padding: 1.25rem;
+  }
+  
+  .dynamic-data {
+    margin: 0 3.5%;
   }
 }

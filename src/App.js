@@ -1,12 +1,13 @@
 import './App.scss';
-import Location from './components/Location';
 import api from './api.info';
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 
 function App() {
 
-	const [query,setQuery] = useState('');
-	const [weather , setWeather] = useState({});
+	let [query, setQuery] = useState('');
+	const [weather, setWeather] = useState({});
+
+	// query = 'Bhopal';
 
 	const search = (evt) => {
 		if (evt.key === "Enter") {
@@ -24,17 +25,48 @@ function App() {
 		return (
 			<div className="weather-details">
 				<div className="temp">
-					15°C
-				</div>	
-				<div className= "weather">
-					Sunny
+					{Math.round(weather.main.temp)}°C
+				</div>
+				<div className="weather">
+					{weather.weather[0].description}
 				</div>
 			</div>
 		);
 	}
 
+	const dateBuilder = (d) => {
+
+		const months = [
+			'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'
+		];
+
+		const days = [
+			'Sunday', 'Monday', 'Tuesday', 'Wednseday', 'Thurdsay', 'Friday', 'Saturday', 'Sunday'
+		];
+
+		let day = days[d.getDay()];
+		let date = d.getDate();
+		let month = months[d.getMonth()];
+		let year = d.getFullYear();
+
+		return `${day} ${date} ${month} ${year}`;
+	}
+
+
+	function Location() {
+		return (
+			<>
+				<div className="location">
+					{weather.name} , {weather.sys.country}
+				</div>
+
+				<div className="date">{dateBuilder(new Date())}</div>
+			</>
+		);
+	}
+
 	return (
-		<div className="app">
+		<div className='app warm'>
 			<main>
 				<input
 					type="text"
@@ -47,17 +79,16 @@ function App() {
 				<button
 					type = "submit"
 					className = "search-btn"
-					placeholder="seach"
+					placeholder="search"
+					onClick = {search}
 				>Search</button>
 			</main>
 			<div className = "dynamic-data">
 				<Location />	
 				<WeatherBox />
 			</div>
-		</div>
+		</div >
 	);
-
-	
 }
 
 export default App;
